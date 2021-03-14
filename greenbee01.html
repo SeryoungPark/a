@@ -1,0 +1,447 @@
+<!doctype html>
+<html>
+    <head>
+        <title>greenbee01</title>
+        <meta charset="UTF-8">
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+        <script>
+          AFRAME.registerComponent('navigate-on-click', {
+            schema: {
+              url: {default: ''}
+            },
+
+            init: function () {
+              var data = this.data;
+              var el = this.el;
+
+              el.addEventListener('click', function () {
+                window.open(data.url, '_blank');
+              });
+            }
+          });
+		
+        </script>
+		
+		<style type="text/css">
+			.hidden {display: none;}
+		</style>
+		
+    </head>
+    
+    <body>
+        <!-- AFRAME -->
+        <a-scene
+           cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
+           renderer="colorManagement: true;">
+            
+            <!-- Asset Management System -->
+            <a-assets>
+                <img id="sky" src="ASSETs/background/background.png">
+                <img id="sampleImage" src="ASSETs/sample_image/sameple01.jpg">
+               <img id="sampleInfo" src="ASSETs/sample_image/sample_info01.jpg">
+                <img id="sampleIcon" src="ASSETs/sample_image/link_icon.jpg">
+				 <div id="omg"><img id="start" src="ASSETs/start3.jpg">
+				<img id="enter" src="ASSETs/enter2.jpg"></div>
+                <a-asset-item id="spaceShip_modeling" src="ASSETs/modeling/spaceship_fin.gltf"></a-asset-item>
+                <a-asset-item id="tubeModeling" src="ASSETs/modeling/jin.gltf"></a-asset-item>
+				<a-asset-item id="logo" src="http://www.localhost/404notfound/404notfound/logo_test3.gltf"
+			></a-asset-item>
+				
+				
+				
+            <!-- Tube Light Mixin -->
+                <a-mixin id="top"
+                         position="0 3 0"
+                         light="intensity: 20; distance: 4; color: #002aff; type: point; decay: 2"></a-mixin>
+                <a-mixin id="bottom"
+                         position="0 -1 0"
+                         light="intensity: 20; distance: 4; color: #002aff; type: point; decay: 2"></a-mixin>
+            <!-- Tube Modeling Mixin -->    
+                <a-mixin id="tube"
+                         gltf-model="#tubeModeling"
+                         scale="2 2 2"></a-mixin>
+            <!-- Interaction Mixin -->
+                <a-mixin id="imageDisplay"
+                         geometry="width: 2.72; height: 3.53"
+                         position="0 1.05 0"
+                         event-set__enter="_event: mouseenter; visible: true"
+                         event-set__leave="_event: mouseleave; visible: false">
+                </a-mixin>
+                <a-mixin id="infoDisplay"
+                         geometry="width: 2.72; height: 3.53"
+                         position="0 0 0.05"
+                         visible="false">
+                </a-mixin>
+                <a-mixin id="icon"
+                         geometry="width: 1; height: 1"
+                         position="0 0 0.01"
+                         navigate-on-click="url: https://kfictionplusalpha.cargo.site"
+                         event-set__enter="_event: mouseenter; scale: 1.05 1.05 1.05"
+                         event-set__leave="_event: mouseleave; scale: 1 1 1">
+                </a-mixin>
+            </a-assets>
+			
+				<a-image id="startInfo"
+						 src="#start"
+						 position="0 -1.2 -8.5"
+						 geometry="width:20px; height:10.2423px"
+						 >
+				
+				<a-image id="enterInfo"
+						 src="#enter"
+						 position="0 -6.5 0"
+						 geometry="width:20px; height:3.0013px"
+						 event-set__click="_event: click; _target: #startInfo; visible: false"
+						 ></a-image>
+			</a-image>
+			
+			
+            <!-- Sounds
+            <a-entity sound="autoplay: true; src: #"></a-entity> -->
+
+			<a-entity gltf-model="#logo"
+					  position="0 -0.042 29"></a-entity>
+            <!-- Sky -->
+            <a-sky src="#sky"></a-sky>
+            
+            <!-- Camera -->
+            <a-entity id="camera"
+                      look-controls cursor="rayOrigin: mouse">
+                <a-camera position="0 -2.5 0">
+                </a-camera>
+            </a-entity>
+            
+            <!-- spaceShip -->
+            <a-entity id="spaceShip"
+                      gltf-model="#spaceShip_modeling"
+                      position="0 0 0"
+                      scale="2 2 2"></a-entity>
+            
+            <!-- Custom Light -->
+            <a-entity id="am"
+                      light="type: ambient; intensity: 0.65">
+            </a-entity>
+
+            <a-entity id="direc"
+                      light="type: directional; intensity: 0.3" position="-0.5 1 -0.5">
+            </a-entity>
+            
+            <a-entity id="whole_blue" position="40 0 0"
+                      light="intensity: 0.15; color: #006eff; type: hemisphere; decay: 0">
+            </a-entity>
+ 
+            
+        <!-- ******************************************
+        *****************CENTER HALLWAY****************
+        *********************************************-->
+            <a-entity mixin="tube 01"
+                      position="-10 -6.7 -37">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_01"
+                         event-set__leave="_target: #info_01">
+                    <a-image id="info_01"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+            
+            <a-entity mixin="tube 02"
+                      position="10 -6.7 -47">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_02"
+                         event-set__leave="_target: #info_02">
+                    <a-image id="info_02"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+            
+            <a-entity mixin="tube 03"
+                      position="-10 -6.7 -57">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_03"
+                         event-set__leave="_target: #info_03">
+                    <a-image id="info_03"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+            
+            <a-entity mixin="tube 04"
+                      position="10 -6.7 -73">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_04"
+                         event-set__leave="_target: #info_04">
+                    <a-image id="info_04"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+           
+            <a-entity mixin="tube 05"
+                      position="-10 -6.7 -83">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_05"
+                         event-set__leave="_target: #info_05">
+                    <a-image id="info_05"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+            
+            <a-entity mixin="tube 06"
+                      position="10 -6.7 -93">
+                <a-entity mixin="top Light"></a-entity>
+                <a-entity mixin="bottom Light"></a-entity>
+                <a-image mixin="imageDisplay"
+                         src="#sampleImage"
+                         event-set__enter="_target: #info_06"
+                         event-set__leave="_target: #info_06">
+                    <a-image id="info_06"
+                             mixin="infoDisplay"
+                             src="#sampleInfo">
+                        <a-image mixin="icon"
+                                 src="#sampleIcon"></a-image>
+                    </a-image>
+                </a-image>
+            </a-entity>
+
+            
+        <!-- ******************************************
+        ******************LEFT HALLWAY*****************
+        *********************************************-->
+            <a-entity id="left"
+                      position="-10 0 4.2"
+                      rotation="0 61 0">
+                    <a-entity mixin="tube 07"
+                          position="-10 -6.7 -37">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_07"
+                             event-set__leave="_target: #info_07">
+                        <a-image id="info_07"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 08"
+                          position="10 -6.7 -47">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_08"
+                             event-set__leave="_target: #info_08">
+                        <a-image id="info_08"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 09"
+                          position="-10 -6.7 -57">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_09"
+                             event-set__leave="_target: #info_09">
+                        <a-image id="info_09"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 10"
+                          position="10 -6.7 -73">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_10"
+                             event-set__leave="_target: #info_10">
+                        <a-image id="info_10"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 11"
+                          position="-10 -6.7 -83">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_11"
+                             event-set__leave="_target: #info_11">
+                        <a-image id="info_11"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 12"
+                          position="10 -6.7 -93">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_12"
+                             event-set__leave="_target: #info_12">
+                        <a-image id="info_12"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+            </a-entity>
+            
+            
+        <!-- ******************************************
+        *****************RIGHT HALLWAY*****************
+        *********************************************-->
+            <a-entity id="right"
+                      position="10 0 4.2"
+                      rotation="0 -61 0">
+                    <a-entity mixin="tube 13"
+                          position="-10 -6.7 -37">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_13"
+                             event-set__leave="_target: #info_13">
+                        <a-image id="info_13"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 14"
+                          position="10 -6.7 -47">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_14"
+                             event-set__leave="_target: #info_14">
+                        <a-image id="info_14"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 15"
+                          position="-10 -6.7 -57">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_15"
+                             event-set__leave="_target: #info_15">
+                        <a-image id="info_15"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 16"
+                          position="10 -6.7 -73">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_16"
+                             event-set__leave="_target: #info_16">
+                        <a-image id="info_16"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+                <a-entity mixin="tube 17"
+                          position="-10 -6.7 -83">
+                    <a-entity mixin="top Light"></a-entity>
+                    <a-entity mixin="bottom Light"></a-entity>
+                    <a-image mixin="imageDisplay"
+                             src="#sampleImage"
+                             event-set__enter="_target: #info_17"
+                             event-set__leave="_target: #info_17">
+                        <a-image id="info_17"
+                                 mixin="infoDisplay"
+                                 src="#sampleInfo">
+                            <a-image mixin="icon"
+                                     src="#sampleIcon"></a-image>
+                        </a-image>
+                    </a-image>
+                </a-entity>
+
+            </a-entity>
+            
+
+        </a-scene>
+    </body>
+</html>
