@@ -76,8 +76,90 @@
 			grid-template-rows: 1fr 80px;
 		}
 		
+	#mobile{
+			text-align: center;
+				font-size: 30px;
+				font-family: EduFavoritHangul;
+				color: blue;
+				display: none;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 80px;
+		}
 		
-	
+		
+@media  only screen and (min-device-width: 320px) and (max-device-width: 480px)and (-webkit-min-device-pixel-ratio: 3)
+{
+			.div1 {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 30px;
+				padding-top: 10px;
+    			width: 80%;
+    			height: 70px;
+    			background-color: blue;
+    			color: white;
+				text-align: center;
+				font-size: 40px;
+				font-family: EduFavoritHangul
+  }
+		
+		.div2{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 27px;
+				padding-top: 10px;
+    			width: 80%;
+    			height: 70px;
+    			background-color: blue;
+    			color: white;
+				text-align: center;
+				font-size: 40px;
+				font-family: EduFavoritHangul
+  }
+		.logo{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%
+		}
+		
+		@font-face{
+			font-family: EduFavoritHangul;
+			src: url("EduFavoritHangul-Regular.woff") format('woff')
+		}
+		
+		a{
+			text-decoration: none;
+			
+		}
+		
+		#instagram{
+			width: 50px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		#grid2{
+			display: grid;
+			min-height: 100%;
+			grid-template-columns: 80px 1fr 80px;
+			grid-template-rows: 1fr 80px;
+		}
+		#mobile{
+			text-align: center;
+				font-size: 40px;
+				font-family: EduFavoritHangul;
+				color: blue;
+				display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 80px;
+		}
+	}
 	</style>
 </head>
 
@@ -96,7 +178,11 @@
 	<a href="" target=" _blank">
 		<p class="div2">
 		Agora
-	</p></a></div>
+	</p></a>
+		
+	<p id="mobile"> 데스크탑을 사용해주세요! </p>
+		
+	</div>
 	<div class="none"></div>
 	<div class="none"></div>
 	<div class="none"></div>
