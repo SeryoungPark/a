@@ -16,40 +16,30 @@
 			height: 99%;
 		}
 		
-		.div1 {
+		#explore{
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 30px;
-				padding-top: 10px;
-    			width: 33%;
-    			height: 50px;
-    			background-color: blue;
-    			color: white;
-				text-align: center;
-				font-size: 30px;
-				font-family: EduFavoritHangul
-  }
+				margin-top: 50px;
+    			width: auto;
+    			height:150px;
+		}
 		
-		.div2{
+		#agora{
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 27px;
-				padding-top: 10px;
-    			width: 33%;
-    			height: 50px;
-    			background-color: blue;
-    			color: white;
-				text-align: center;
-				font-size: 30px;
-				font-family: EduFavoritHangul
+				margin-top: -20px;
+    			width: auto;
+    			height: 150px;
+    			
   }
 		.logo{
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
-			width: 80%
+			margin-top: 90px;
+			width: 1200px;
 		}
 		
 		@font-face{
@@ -76,54 +66,41 @@
 			grid-template-rows: 1fr 80px;
 		}
 		
-	#mobile{
-			text-align: center;
-				font-size: 30px;
-				font-family: EduFavoritHangul;
-				color: blue;
-				display: none;
+		#mobile{
+				display: block;
+			width: 150px;
 			margin-left: auto;
 			margin-right: auto;
-			margin-top: 80px;
-		}
+			margin-top: 100px;
 		
 		
 @media  only screen and (min-device-width: 320px) and (max-device-width: 480px)and (-webkit-min-device-pixel-ratio: 3)
 {
-			.div1 {
+			
+		#explore{
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 40px;
-				padding-top: 10px;
-    			width: 80%;
-    			height: 70px;
-    			background-color: blue;
-    			color: white;
-				text-align: center;
-				font-size: 40px;
-				font-family: EduFavoritHangul
-  }
+				margin-top: 50px;
+    			width: auto;
+    			height:50%;
+		}
 		
-		.div2{
+		#agora{
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 27px;
-				padding-top: 10px;
-    			width: 80%;
-    			height: 70px;
-    			background-color: blue;
-    			color: white;
-				text-align: center;
-				font-size: 40px;
-				font-family: EduFavoritHangul
+				margin-top: -10px;
+    			width: auto;
+    			height:50%;
+    			
   }
 		.logo{
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
-			width: 100%
+			margin-top:30px;
+			width:90%;
 		}
 		
 		@font-face{
@@ -150,11 +127,8 @@
 			grid-template-rows: 1fr 80px;
 		}
 		#mobile{
-			text-align: center;
-				font-size: 60px;
-				font-family: EduFavoritHangul;
-				color: blue;
 				display: block;
+			width: 140px;
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: 80px;
@@ -170,17 +144,15 @@
 	<div><img class="logo" src="logo.png">
 	
 	<a href="explore.html" target=" _blank">
-		<p class="div1">
-		Explore 404
-	</p></a>
+	<img id="explore" src="intro_explore.png">
+		</a>
 	
 
 	<a href="https://greenbee404.cargo.site" target=" _blank">
-		<p class="div2">
-		Agora
-	</p></a>
+	<img id="agora" src="intro_agora.png">
+	</a>
 		
-	<p id="mobile"> PC only </p>
+	<img id="mobile" src="intro_pconly.png"> 
 		
 	</div>
 	<div class="none"></div>
