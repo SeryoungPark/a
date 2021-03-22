@@ -37,7 +37,9 @@
         <!-- AFRAME -->
         <a-scene
            cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
-           renderer="colorManagement: true;">
+           renderer="colorManagement: true;"
+			loading-screen="dotsColor: white; backgroundColor: blue"
+			vr-mode-ui="enabled: false;">
             
             <!-- Asset Management System -->
             <a-assets>
@@ -175,7 +177,7 @@
 						 ></a-image>
 			
 			
-			<a-entity light="color: #9496ff; intensity: 0.9; type: point; target: #logo" visible=""></a-entity>
+
             <!-- Sounds
             <a-entity sound="autoplay: true; src: #"></a-entity> -->
 
@@ -230,16 +232,24 @@
                       scale="2 2 2"></a-entity>
             
             <!-- Custom Light -->
-            <a-entity id="am"
-                      light="type: ambient; intensity: 0.65">
+ `			<a-entity id="am"
+                      light="type: ambient; intensity: 0.36">
             </a-entity>
 
-            <a-entity id="direc"
-                      light="type: directional; intensity: 0.3" position="-0.5 1 -0.5">
+            <a-entity id="direc1"
+                      light="type: directional; intensity: 0.3" position="0 5 -90">
             </a-entity>
             
-            <a-entity id="whole_blue" position="40 0 0"
-                      light="intensity: 0.15; color: #006eff; type: hemisphere; decay: 0">
+            <a-entity id="direc2"
+                      light="type: directional; intensity: 0.3" position="-90 5 -35">
+            </a-entity>
+            
+            <a-entity id="direc3"
+                      light="type: directional; intensity: 0.3" position="90 5 -35">
+            </a-entity>
+            
+            <a-entity id="whole_blue" position="-5 -5 10"
+                      light="intensity: 0.47; color: #94b4ff; type: hemisphere; decay: 0">
             </a-entity>
  
             
